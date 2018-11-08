@@ -1,0 +1,27 @@
+<div class="container" [class.spinner]="isload">
+
+  <div class="book-card" *ngFor="let book of books" >
+    <div class="card-left">
+        <img *ngIf="book.img" src="{{book.img}}" alt="book image" >
+        <img *ngIf="!book.img" src="http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg" alt="book image not avilable" >
+    </div>
+      
+      
+      <div  class="card-right">
+          <h2>Title: {{book.title | titlecase}}</h2>         
+          <h2>Author: {{book.author}}</h2>        
+          <h2>Date:  {{book.date | date:'medium'}}</h2>
+
+
+          <div class="card-btn">
+              <button class="btn btn-yellow" (click)="onEdit(book)">edit</button>
+              <button class="btn btn-red" (click)="onDelete(book)">delete</button>
+          </div>
+
+      </div>
+
+      
+      
+      
+  </div>
+</div>

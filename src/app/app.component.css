@@ -1,0 +1,9 @@
+.row {
+  display: block;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.mb-sm {
+  margin-bottom: 10px;
+}

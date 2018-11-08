@@ -1,0 +1,12 @@
+<app-nav class="mb-sm" (btnClicked)="showPopup()"></app-nav>
+<div class="row">
+    <flash-messages class="mb-sm"></flash-messages>
+  <app-new-book *ngIf="showAddNewBookPopup"  (closeClicked)="closeNewBookPopup()" (newBookToParent)="addNewBook($event)"></app-new-book>
+
+  <!--editBookToParent send data to parent after change -->
+  <app-edit *ngIf="showEditPopup" [editBook]="edit" (closeEditClicked)="closeEditPopup()" (editBookToParent)="editBook($event)"></app-edit>
+
+
+  <!--editBookToParent send data to parent before change -->
+  <app-home (editBookToParent)="editBookFromParent($event)"></app-home>
+</div>
