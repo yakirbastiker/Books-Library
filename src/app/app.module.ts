@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
-
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NewBookComponent } from './components/new-book/new-book.component';

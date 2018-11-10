@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { Book } from '../../model/Book.model';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -11,10 +11,13 @@ export class EditComponent implements OnInit {
 
   @Input() editBook: Book;// the book that edit
   @Output()  closeEditClicked: EventEmitter<boolean> = new EventEmitter<boolean>();//close popup
-  @Output()  editBookToParent: EventEmitter<Book> = new EventEmitter<Book>();
+  @Output()  editBookToParent: EventEmitter<Book> = new EventEmitter<Book>();//book after edit
 
 
-  constructor(private flashMessage: FlashMessagesService) { }
+  constructor(
+    private flashMessage: FlashMessagesService,
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
   }  
@@ -32,8 +35,11 @@ export class EditComponent implements OnInit {
       });
     }else{
 
-      //console.log(value)
-      //send data to save new book
+      //remove all special characters
+      console.log(value.title);
+      value.title = this.dataService.changeTitle(value.title);
+      console.log(value.title);
+      //send data to save edit book
       this.editBookToParent.emit(value);
       // close popup
       this.clickOnClose();

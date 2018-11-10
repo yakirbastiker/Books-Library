@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   editBook(book: Book) {
-    this.home.editBook(book);
+    
     this.showEditPopup = false;
   }
 }

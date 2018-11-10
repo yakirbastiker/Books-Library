@@ -18,6 +18,13 @@ export class DataService {
     return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
   }
 
+  //remove all special characters
+  changeTitle(str: string) {
+    return str.replace(/[^a-zA-Z0-9]/g, ' ').trim();
+  } 
+
+
+
   // get data and set array of books
   getBooks() {
     //get data with http
@@ -28,21 +35,15 @@ export class DataService {
         //give id to books
         data.forEach(book => {
           book.id = this.randomID();
+          book.title = this.changeTitle(book.title);
         });  
-        //console.log(data)     //work!!
+
         return data
       }
     ))
     
     return this.books
         
-  }
-
-  editBook(book: Book) {
-    //check if sure to delete
-    //get new data
-    //edit book by id
-    //return to homepage
   }
 
 }

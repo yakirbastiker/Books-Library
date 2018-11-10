@@ -8,7 +8,7 @@
       
       
       <div  class="card-right">
-          <h2>Title: {{book.title | titlecase}}</h2>         
+          <h2>Title: {{dataService.changeTitle(book.title) | titlecase}}</h2>         
           <h2>Author: {{book.author}}</h2>        
           <h2>Date:  {{book.date | date:'medium'}}</h2>
 
